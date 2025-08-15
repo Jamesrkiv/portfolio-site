@@ -1,25 +1,31 @@
 import DarkModeSwitch from "./header-components/DarkModeSwitch";
 import HeaderBehavior from "./header-components/HeaderBehavior";
 
-export default function SiteHeader() {
+type Props = {
+	linkA: { text: string, link: string },
+	linkB: { text: string, link: string },
+	linkC: { text: string, link: string },
+}
+
+export default function SiteHeader({ linkA, linkB, linkC }: Props) {
 	return (
-		<header className="header transition-colors duration-500 [&_*]:!transition-none flex sticky top-4 py-4 px-8 my-4 mx-auto rounded-full">
+		<header className="header transition-colors duration-500 [&_*]:!transition-none flex sticky top-4 py-4 sm:px-8 px-4 my-4 mx-auto rounded-full">
 			<HeaderBehavior/>
-			<span className="flex space-x-12 my-auto font-light">
+			<span className="flex sm:space-x-12 space-x-4 my-auto font-light">
 				<a
-					href="portfolio"
+					href={linkA.link}
 					className="hover:text-pink-300"
-				>PORTFOLIO</a>
+				>{linkA.text}</a>
 				<a
-					href="https://www.linkedin.com/in/james-kent-918485240/"
+					href={linkB.link}
 					target="_blank"
 					className="hover:text-pink-300"
-				>LINKEDIN</a>
+				>{linkB.text}</a>
 				<a
-					href="https://github.com/Jamesrkiv"
+					href={linkC.link}
 					target="_blank"
 					className="hover:text-pink-300"
-				>GITHUB</a>
+				>{linkC.text}</a>
 				<span className="shrink-0 inline-flex items-center">
 					<DarkModeSwitch/>
 				</span>
