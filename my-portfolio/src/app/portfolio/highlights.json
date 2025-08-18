@@ -1,0 +1,14 @@
+{
+	"A": {
+		"title": "Pharmacy Info Site",
+		"path": "portfolio/ProjectA",
+		"desc": "A web application designed to streamline access to pharmacy and contact information. Built with React, Node.js, and PostgreSQL.",
+		"img": "/thumbnails/Untitled-1.png"
+	},
+	"B": {
+		"title": "Placeholder B",
+		"path": "portfolio/ProjectB",
+		"desc": "Description for project B, information goes here.",
+		"img": "/thumbnails/placeholder.jpg"
+	}
+}
