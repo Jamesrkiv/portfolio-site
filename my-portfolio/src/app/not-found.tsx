@@ -19,7 +19,7 @@ export default function NotFound() {
 					</p>
 				</div>
 				<p className="font-light text-sm opacity-70">
-					The page you're looking for doesn't exist or was moved
+					{"The page you're looking for doesn't exist or was moved"}
 				</p>
 				<p className="mt-6 text-medium">
 					<Link className="hover:text-[var(--link-color)]" href="/">

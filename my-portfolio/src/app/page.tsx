@@ -18,16 +18,16 @@ export default function Home() {
 							<div className="flex-2 flex p-4 md:px-8 m-auto w-full h-full">
 								<div className="m-auto">
 									<p className="text-xl font-bold">
-										Hello, I'm
+										{"Hello, I'm"}
 									</p>
 									<p className="text-4xl font-black">
-										James Kent
+										{"James Kent"}
 									</p>
 									<p className="text-xl font-bold mb-4 accent-grad-text">
-										Software Developer
+										{"Software Developer"}
 									</p>
 									<p className="">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elit nisl, iaculis ac tempus ac, pharetra vitae orci. Pellentesque dignissim, mauris vel pellentesque suscipit, dolor mi laoreet metus, ornare euismod orci ligula at mi. In commodo arcu ligula, ac rutrum tortor tristique in.
+										{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elit nisl, iaculis ac tempus ac, pharetra vitae orci. Pellentesque dignissim, mauris vel pellentesque suscipit, dolor mi laoreet metus, ornare euismod orci ligula at mi. In commodo arcu ligula, ac rutrum tortor tristique in."}
 									</p>
 								</div>
 							</div>
@@ -62,7 +62,7 @@ export default function Home() {
 			</div>
 			{/* Bottom Content */}
 			<div className="flex p-6 md:p-8 md:px-12">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elit nisl, iaculis ac tempus ac, pharetra vitae orci. Pellentesque dignissim, mauris vel pellentesque suscipit, dolor mi laoreet metus, ornare euismod orci ligula at mi. In commodo arcu ligula, ac rutrum tortor tristique in.
+				{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elit nisl, iaculis ac tempus ac, pharetra vitae orci. Pellentesque dignissim, mauris vel pellentesque suscipit, dolor mi laoreet metus, ornare euismod orci ligula at mi. In commodo arcu ligula, ac rutrum tortor tristique in."}
 			</div>
 		</div>
 	);
