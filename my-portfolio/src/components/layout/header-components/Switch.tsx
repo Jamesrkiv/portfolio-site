@@ -2,10 +2,10 @@ import Sun from "$/icons/Sun";
 import Moon from "$/icons/Moon";
 
 type Props = {
-	caption?: string;
-	checked: boolean;
-	onChange: (value: boolean) => void;
-	disabled?: boolean;
+	caption?: string,
+	checked: boolean,
+	onChange: (value: boolean) => void,
+	disabled?: boolean
 };
 
 export default function Switch ({ caption, onChange, checked, disabled = false }: Props) {

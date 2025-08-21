@@ -16,7 +16,7 @@ export default function HeaderBehavior({ scrollThreshold = 15 }: { scrollThresho
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
 		return () => window.removeEventListener('scroll', onScroll);
-	}, []);
+	});
 
 	return null;
 }
