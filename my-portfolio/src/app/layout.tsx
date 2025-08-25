@@ -35,11 +35,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 				<main className="flex flex-col font-sans from-[var(--bg)] to-[var(--bg2)] transition-colors duration-300 bg-gradient-to-b">
 					<SiteHeader/>
 					{children}
-					<footer className="flex w-full">
-						<div className="mx-auto bg-[var(--bg)] rounded-full px-2.5 py-1 mb-2">
-							<p className="font-light text-sm">© 2025 James Kent</p>
-						</div>
-					</footer>
 				</main>
 			</body>
 		</html>
