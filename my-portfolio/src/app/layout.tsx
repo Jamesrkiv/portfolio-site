@@ -31,7 +31,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 				<meta name="color-scheme" content="dark light" />
 			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<Scroll/>
+				{/*<Scroll/>*/}
 				<main className="flex flex-col font-sans from-[var(--bg)] to-[var(--bg2)] transition-colors duration-300 bg-gradient-to-b">
 					<SiteHeader/>
 					{children}

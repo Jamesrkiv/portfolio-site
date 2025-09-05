@@ -6,16 +6,16 @@ import QuickLinks from "./app-content/QuickLinks";
 export default function Home() {
 	return (
 		<main>
-			<div className="">
+			<div id="intro">
 				<LandingArea/>
 			</div>
-			<div className="mt-4">
+			<div id="about" className="mt-4">
 				<AboutMe/>
 			</div>
-			<div className="mt-10 md:mt-16">
+			<div id="experience" className="mt-10 md:mt-16">
 				<InfoSquares/>
 			</div>
-			<div className="mt-10 md:mt-16">
+			<div id="more" className="mt-10 md:mt-16">
 				<QuickLinks/>
 			</div>
 		</main>

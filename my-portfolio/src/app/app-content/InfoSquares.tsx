@@ -26,6 +26,7 @@ export default function InfoSquares() {
 				business={"East Carolina University"}
 				duration={"2018 - 2022"}
 				desc={(<>
+					<li>{"Teaching Assistant — Principles of Programming Languages (Fall 2021)"}</li>
 					<li>{"Reviewed assignments and supported students across Python, Haskell, Prolog, and finite automata."}</li>
 				</>)}
 			/>
