@@ -1,0 +1,12 @@
+{
+	"A": {
+		"title": "Pharmacy Info Site",
+		"path": "portfolio/pharm-info-site",
+		"img": "/images/pharm-thumbnail.png"
+	},
+	"B": {
+		"title": "Placeholder B",
+		"path": "portfolio/ProjectB",
+		"img": "/images/placeholder.jpg"
+	}
+}

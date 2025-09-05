@@ -1,14 +1,11 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
-import Switch from "@/components/ui/Switch";
+import { useEffect, useState } from "react";
+import Switch from "./Switch";
 
 type Theme = "light" | "dark" | "system";
 
 export default function DarkModeSwitch() {
-	const router = useRouter();
-	const [isPending, startTransition] = useTransition();
 	const [mounted, setMounted] = useState(false);
 	const [systemDark, setSystemDark] = useState(false);
 	const [theme, setTheme] = useState<Theme>("system");
@@ -54,7 +51,6 @@ export default function DarkModeSwitch() {
 		<Switch
 			onChange={(checked) => applyTheme(checked ? "dark" : "light")}
 			checked={mounted ? checked : false}
-			disabled={isPending}
 		/>
 	);
 }
