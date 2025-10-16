@@ -1,3 +1,3 @@
 # Portfolio
 
-WIP → jamesrkiv.vercel.app
+WIP → https://jamesrkiv.vercel.app
