@@ -1,4 +1,13 @@
-export default function AboutPage() {
+import fs from "node:fs/promises";
+import path from "node:path";
+
+export default async function AboutPage() {
+	// Get folders in directory to find portfolio pieces
+	const ROOT = path.join(process.cwd(), "./src/app/portfolio");
+	const names = await fs.readdir(ROOT);
+	const stats = await Promise.all( names.map(name => fs.stat(path.join(ROOT, name))) );
+	const folders: string[] = names.filter((_, i) => stats[i].isDirectory());
+
 	return (
 		<main>
 			<div className="flex flex-col">
