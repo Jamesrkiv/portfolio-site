@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import PortfolioHighlight from "@/components/layout/PortfolioHighlight";
-import highlights from "@/app/portfolio/highlights.json";
+import { getHighlights } from "@/app/portfolio/projects";
 import Briefcase from "$/icons/Briefcase";
 import LinkedIn from "$/icons/LinkedIn";
 import GitHub from "$/icons/GitHub";
 
 export default function LandingArea() {
+	const highlights = getHighlights();
 	return (
 		<div className="flex flex-col md:px-12 md:pb-12 px-6 pb-6 w-full h-[calc(100svh-5.5rem)] min-h-180">
 			<div className="flex flex-col section-bg rounded-3xl w-full h-full p-4">
@@ -74,16 +75,16 @@ export default function LandingArea() {
 				<div className="flex-1 flex flex-col md:flex-row w-full h-full">
 					<div className="flex-2 md:p-4 px-4 py-2">
 						<PortfolioHighlight
-							title={highlights["A"]["title"]}
-							path={highlights["A"]["path"]}
-							img={highlights["A"]["img"]}
+							title={highlights[0].title}
+							path={`portfolio/${highlights[0].slug}`}
+							img={highlights[0].thumbnail}
 						/>
 					</div>
 					<div className="flex-2 md:p-4 px-4 py-2">
 						<PortfolioHighlight
-							title={highlights["B"]["title"]}
-							path={highlights["B"]["path"]}
-							img={highlights["B"]["img"]}
+							title={highlights[1].title}
+							path={`portfolio/${highlights[1].slug}`}
+							img={highlights[1].thumbnail}
 						/>
 					</div>
 				</div>

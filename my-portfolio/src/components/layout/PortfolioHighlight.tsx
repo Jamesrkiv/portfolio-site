@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import "@/app/globals.css";
 
 type Props = {
 	title: string,

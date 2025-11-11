@@ -4,7 +4,8 @@ import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import SiteHeader from "@/components/layout/SiteHeader";
 import Scroll from "@/components/behavior/Scroll";
-import "./globals.css";
+import "@/css/embla.css";
+import "@/css/globals.css";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
