@@ -5,7 +5,7 @@ export type Project = {
 	summary: string;
 	tags: string[];
 	thumbnail: string;
-	images?: string[];
+	images?: {src: string, name: string}[];
 	repo?: string;
 	body: string;
 };
