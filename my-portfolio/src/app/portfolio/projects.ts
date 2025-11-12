@@ -15,19 +15,39 @@ export const projects: Project[] = [
 		slug: "PharmInfoSite",
 		title: "Pharmacy Info Site",
 		highlight: true,
-		summary: "A responsive internal web application designed to streamline access to pharmacy and contact information. Built with React, Node.js, and PostgreSQL, the app features a minimalist UI paired with robust backend logic, authentication, and dynamic data relationships.",
+		summary: "A responsive internal web application designed to streamline access to pharmacy and contact information.",
 		tags: ["React", "Vite", "Tailwind", "Node.js", "Express", "PostgreSQL"],
-		thumbnail: "/images/pharm-info-site/pharm-thumbnail.png",
+		thumbnail: "/images/pharm-info-site/pharm_thumbnail.png",
 		images: [
-			"/images/pharm-info-site/main_page.png",
-			"/images/pharm-info-site/audit_log.png",
-			"/images/pharm-info-site/new_contact.png",
-			"/images/pharm-info-site/mobile_friendly.png",
-			"/images/pharm-info-site/login.png",
+			{
+				src: "/images/pharm-info-site/main_page.png",
+				name: "Main Page"
+			},
+			{
+				src: "/images/pharm-info-site/audit_log.png",
+				name: "Audit Log"
+			},
+			{
+				src: "/images/pharm-info-site/new_contact.png",
+				name: "New Contact Modal"
+			},
+			{
+				src: "/images/pharm-info-site/mobile_friendly.png",
+				name: "Mobile View"
+			},
+			{
+				src: "/images/pharm-info-site/login.png",
+				name: "Login Modal"
+			},
+			{
+				src: "/images/pharm-info-site/admin_account.png",
+				name: "Admin Account Panel"
+			},
 		],
 		repo: "https://github.com/JamesHHC/Pharm-Info-Site",
-		body: "A responsive internal web application designed to streamline access to pharmacy and contact information. Built with React, Node.js, and PostgreSQL, the app features a minimalist UI paired with robust backend logic, authentication, and dynamic data relationships.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus metus sit amet malesuada mollis. Nunc accumsan dolor a nibh vulputate, sed consectetur tellus suscipit. Donec a dolor elementum, pretium felis in, accumsan augue. Etiam lobortis convallis purus, laoreet dignissim dolor pretium id. Nam consequat nibh nec dictum lacinia. Sed sed risus dolor. Donec sit amet nibh et diam facilisis accumsan quis quis nisl. Praesent tempor tortor quis convallis consectetur. Duis vulputate est ut maximus egestas. Nulla eu enim aliquet, tristique nibh id, accumsan quam. Nunc libero erat, lacinia eu turpis eget, lacinia blandit ipsum. Donec sed egestas neque, ac pellentesque urna. Pellentesque ultrices auctor vulputate. Mauris rutrum, mauris nec porta iaculis, ipsum diam imperdiet arcu, quis luctus sem lectus quis lorem. Phasellus ut accumsan neque. Nulla id eros sit amet orci porta imperdiet."
+		body: "This application is an internal-tool built to serve staff at a home-care organization, consolidating pharmacy and contact data into a unified, accessible platform. The front-end is a responsive single-page application built using React and Vite, styled with Tailwind CSS to ensure clean, mobile-friendly layouts and smooth user experience regardless of device size. On the server side, a Node.js/Express-based REST API handles business logic, data persistence with PostgreSQL, and manages authentication using JSON Web Tokens (JWTs) including refresh-token support and bcrypt for secure password handling.\n\nUnder the hood, the data model supports complex many-to-many relationships between pharmacies and contacts—allowing contacts to be associated with multiple pharmacies and vice-versa with the UI providing real-time searching to surface the right information quickly. Editing is done via modal workflows, with a rich-text editor (Quill) for contact/pharmacy information, and audit-log functionality built in so administrators can track exactly who changed what and when.\n\nThe deployment is production-grade: the front-end is built and served by NGINX on a Windows Server environment; the back-end is managed by PM2 for process resiliency and automatic restart on system reboot; regular PostgreSQL backups are scripted and uploaded automatically to SharePoint. Role-based access control ensures that users only see and edit what they’re permitted to, and built-in admin tools give designated users the ability to manage user roles and view system logs."
 	},
+
 	{
 		slug: "Placeholder1",
 		title: "Placeholder Site One",
@@ -37,6 +57,7 @@ export const projects: Project[] = [
 		thumbnail: "/images/placeholder.jpg",
 		body: "Project body"
 	},
+
 	{
 		slug: "Placeholder2",
 		title: "Placeholder Site Two",
