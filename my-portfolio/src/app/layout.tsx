@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import SiteHeader from "@/components/layout/SiteHeader";
-import Scroll from "@/components/behavior/Scroll";
+//import Scroll from "@/components/behavior/Scroll";
 import "@/css/embla.css";
 import "@/css/globals.css";
 
