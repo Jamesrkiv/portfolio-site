@@ -55,9 +55,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 					<DotButton
 						key={`d${i}`}
 						onClick={() => onDotButtonClick(i)}
-						className={'embla__dot'.concat(
-							i === selectedIndex ? ' embla__dot--selected' : ''
-						)}
+						className={'embla__dot'.concat(i === selectedIndex ? ' embla__dot--selected' : '')}
 					/>
 				))}
 			</div>
@@ -67,13 +65,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 			<div
 				className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
 				onClick={() => setActiveImage(null)}
-				style={{touchAction: "none"}}
 			>
-				<div className="relative w-[90vw] h-[90vh] max-w-6xl overflow-auto touch-auto">
+				<div className="relative w-[90vw] h-[90vh] max-w-6xl">
 					<Image
 						src={activeImage}
 						alt="Expanded View" fill
-						style={{objectFit: "contain", touchAction: "pinch-zoom"}}
+						style={{objectFit: "contain"}}
 						className="rounded-lg"
 					/>
 				</div>

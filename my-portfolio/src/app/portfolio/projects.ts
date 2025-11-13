@@ -49,21 +49,52 @@ export const projects: Project[] = [
 	},
 
 	{
-		slug: "Placeholder1",
-		title: "Placeholder Site One",
+		slug: "DJsBot",
+		title: "Discord Bot",
 		highlight: true,
-		summary: "Summary",
-		tags: [],
+		summary: "A discord bot created for my friends utilizing Discord.js. Functionality is centered around playing music and other minor utilities.",
+		tags: ["Node.js"],
 		thumbnail: "/images/placeholder.jpg",
+		images: [
+			{
+				src: "/images/placeholder.jpg",
+				name: "Placeholder Image"
+			},
+		],
+		repo: "https://github.com/Jamesrkiv/d.js-bot",
 		body: "Project body"
 	},
 
 	{
-		slug: "Placeholder2",
-		title: "Placeholder Site Two",
-		summary: "Summary",
-		tags: [],
+		slug: "TodoList",
+		title: "Todo List",
+		highlight: true,
+		summary: "Project Summary",
+		tags: ["Node.js", "Electron"],
 		thumbnail: "/images/placeholder.jpg",
+		images: [
+			{
+				src: "/images/placeholder.jpg",
+				name: "Placeholder Image"
+			},
+		],
+		repo: "https://github.com/Jamesrkiv/d.js-bot",
+		body: "Project body"
+	},
+
+	{
+		slug: "PortfolioSite",
+		title: "Personal Portfolio",
+		summary: "Project summary",
+		tags: ["Next.js", "React", "Tailwind", "Node.js"],
+		thumbnail: "/images/placeholder.jpg",
+		images: [
+			{
+				src: "/images/placeholder.jpg",
+				name: "Placeholder Image"
+			},
+		],
+		repo: "https://github.com/Jamesrkiv/portfolio-site",
 		body: "Project body"
 	},
 ];
