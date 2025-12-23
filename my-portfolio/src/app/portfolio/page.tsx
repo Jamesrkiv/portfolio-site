@@ -10,7 +10,7 @@ export default async function PortfolioPage() {
 				<div className="md:px-12 md:pb-12 px-6 pb-6 w-full h-[calc(100svh-5.5rem)] min-h-180">
 					<div className="flex flex-col w-full h-full p-4 gap-4">
 						{projects.map((proj, i) => {
-							const indx = Math.floor(Math.random() * (proj.images.length - 1));
+							const indx = Math.floor(Math.random() * (proj.images.length - 1)) || 0;
 							return (
 								<div key={`proj${i}`} className="m-auto section-bg w-full h-full rounded-xl overflow-hidden min-h-45">
 									<Link href={`portfolio/${proj.slug}`} className="flex w-full h-full">
