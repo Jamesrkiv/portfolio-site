@@ -17,7 +17,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 	const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
 
-	const [activeImage, setActiveImage] = useState<string | null>(null);
+	const [activeImage, setActiveImage] = useState<{ src: string, name: string } | null>(null);
 	useEffect(() => {
 		if (activeImage) {
 			document.body.style.overflow = "hidden";
@@ -43,7 +43,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 									alt={img.name || `img${i}`}
 									sizes="(max-width: 768px) 100vh"
 									className="rounded-3xl border-1 border-[var(--bg2)] hover:opacity-90 cursor-pointer"
-									onClick={() => setActiveImage(img.src)}
+									onClick={() => setActiveImage(img)}
 								/>
 							</div>
 						</div>
@@ -63,16 +63,21 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 		{/* Fullscreen Modal */}
 		{activeImage && (
 			<div
-				className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+				className="fixed inset-0 bg-black/80 flex flex-col items-center justify-center z-50 p-10"
 				onClick={() => setActiveImage(null)}
 			>
 				<div className="relative w-[90vw] h-[90vh] max-w-6xl">
 					<Image
-						src={activeImage}
+						src={activeImage.src}
 						alt="Expanded View" fill
 						style={{objectFit: "contain"}}
 						className="rounded-lg"
 					/>
+				</div>
+				<div className="header header-bg mt-2 mx-10 p-2 rounded">
+					<p className="">
+						{activeImage.name}
+					</p>
 				</div>
 			</div>
 		)}

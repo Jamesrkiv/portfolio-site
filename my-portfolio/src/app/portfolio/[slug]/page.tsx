@@ -15,7 +15,7 @@ export default async function ProjectPage({params}: {params: Promise<{slug: stri
 		<main>
 			<div className="flex flex-col">
 				{/* Backdrop */}
-				<div className="flex flex-col md:pb-12 pb-6 w-full min-h-[calc(100svh-5.5rem)]">
+				<div className="flex flex-col md:pb-12 pb-6 w-full min-h-[calc(100svh-16.72rem)]">
 					{/* Title Container */}
 					<div className="mb-10">
 						{/* Title */}

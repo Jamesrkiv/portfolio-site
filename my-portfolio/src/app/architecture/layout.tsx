@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-	title: "Contact | James Kent",
-	description: "Contact me",
+	title: "Architecture | James Kent",
+	description: "Site architecture",
 };
 
-export default function PortfolioLayout({ children }: { children: ReactNode }) {
+export default function ProjectLayout({ children }: { children: ReactNode }) {
 	return (
 		<section>
 			{children}

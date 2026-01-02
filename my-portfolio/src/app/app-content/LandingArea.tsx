@@ -9,8 +9,8 @@ import GitHub from "$/icons/GitHub";
 export default function LandingArea() {
 	const highlights = getHighlights();
 	return (
-		<div className="flex flex-col md:px-12 md:pb-12 px-6 pb-6 w-full h-[calc(100svh-5.5rem)] min-h-180">
-			<div className="flex flex-col section-bg rounded-3xl w-full h-full p-4">
+		<div className="flex flex-col md:px-12 md:pb-12 px-6 pb-6 w-full min-h-[calc(100svh-5.5rem)]">
+			<div className="flex flex-col grow section-bg rounded-3xl w-full h-full p-4">
 				{/* Landing Bio */}
 				<div className="flex-1 flex mx-auto flex-col sm:flex-row w-full h-full">
 					{/* Left */}
@@ -72,6 +72,7 @@ export default function LandingArea() {
 					</div>
 				</div>
 				{/* Portfolio Highlights */}
+				<p className="px-4">Highlighted Projects</p>
 				<div className="flex-1 flex flex-col md:flex-row w-full h-full">
 					<div className="flex-2 md:p-4 px-4 py-2">
 						<PortfolioHighlight

@@ -50,7 +50,7 @@ export default function QuickLinks() {
 				</div>
 			</div>
 			<div className="mx-auto mb-2 rounded-full px-2.5 py-1 z-10 opacity-70">
-				<p className="font-light text-sm text-white">© 2025 James Kent</p>
+				<p className="font-light text-sm text-white">© 2026 James Kent</p>
 			</div>
 		</div>
 	);

@@ -29,7 +29,7 @@ export const projects: Project[] = [
 			},
 			{
 				src: "/images/pharm-info-site/new_contact.png",
-				name: "New Contact Modal"
+				name: "New Contact Form"
 			},
 			{
 				src: "/images/pharm-info-site/mobile_friendly.png",
@@ -37,11 +37,11 @@ export const projects: Project[] = [
 			},
 			{
 				src: "/images/pharm-info-site/login.png",
-				name: "Login Modal"
+				name: "Login Panel"
 			},
 			{
 				src: "/images/pharm-info-site/admin_account.png",
-				name: "Admin Account Panel"
+				name: "Account Panel (Admin)"
 			},
 		],
 		repo: "https://github.com/JamesHHC/Pharm-Info-Site",
@@ -54,48 +54,68 @@ export const projects: Project[] = [
 		highlight: true,
 		summary: "A discord bot created for my friends utilizing Discord.js. Functionality is centered around playing music and other minor utilities.",
 		tags: ["Node.js"],
-		thumbnail: "/images/placeholder.jpg",
+		thumbnail: "/images/djs-bot/djs_thumbnail.png",
 		images: [
 			{
-				src: "/images/placeholder.jpg",
-				name: "Placeholder Image"
+				src: "/images/djs-bot/bot_invite.png",
+				name: "Bot Invite Page"
+			},
+			{
+				src: "/images/djs-bot/music_commands.png",
+				name: "Music Commands"
+			},
+			{
+				src: "/images/djs-bot/help_options.png",
+				name: "Help Options"
+			},
+			{
+				src: "/images/djs-bot/music_queue.png",
+				name: "Music Queue"
+			},
+			{
+				src: "/images/djs-bot/music_ui.png",
+				name: "Music UI"
+			},
+			{
+				src: "/images/djs-bot/avatar.png",
+				name: "Avatar Command"
 			},
 		],
 		repo: "https://github.com/Jamesrkiv/d.js-bot",
-		body: "Project body"
+		body: "A Node.js Discord bot built using Discord.js that supports music playback in voice channels along with a small set of utility commands. The bot handles audio streaming, voice state management, and asynchronous command processing while interacting with Discord’s gateway and REST APIs.\n\nThis project focuses on writing clean, modular JavaScript for an event-driven environment, managing external dependencies, and handling edge cases such as connection failures and invalid user input."
 	},
 
 	{
 		slug: "TodoList",
-		title: "Todo List",
+		title: "To-Do List",
 		highlight: true,
-		summary: "Project Summary",
+		summary: "A simple, lightweight to-do list app for tracking tasks in Microsoft Windows.",
 		tags: ["Node.js", "Electron"],
 		thumbnail: "/images/placeholder.jpg",
 		images: [
 			{
-				src: "/images/placeholder.jpg",
-				name: "Placeholder Image"
+				src: "/images/todo-list/darkmode.png",
+				name: "To-Do List Application (Darkmode)"
 			},
-		],
-		repo: "https://github.com/Jamesrkiv/d.js-bot",
-		body: "Project body"
-	},
-
-	{
-		slug: "PortfolioSite",
-		title: "Personal Portfolio",
-		summary: "Project summary",
-		tags: ["Next.js", "React", "Tailwind", "Node.js"],
-		thumbnail: "/images/placeholder.jpg",
-		images: [
 			{
-				src: "/images/placeholder.jpg",
-				name: "Placeholder Image"
+				src: "/images/todo-list/lightmode.png",
+				name: "To-Do List Application (Lightmode)"
+			},
+			{
+				src: "/images/todo-list/new_item.png",
+				name: "New Item Panel"
+			},
+			{
+				src: "/images/todo-list/rescaling.png",
+				name: "Scaling Design"
+			},
+			{
+				src: "/images/todo-list/sort_methods.png",
+				name: "Quick Sorting"
 			},
 		],
-		repo: "https://github.com/Jamesrkiv/portfolio-site",
-		body: "Project body"
+		repo: "https://github.com/Jamesrkiv/TodoList",
+		body: "Project body placeholder"
 	},
 ];
 
