@@ -9,7 +9,7 @@ type Props = {
 
 export default function PortfolioHighlight({ title, path, img }: Props) {
 	return (
-		<div className="relative flex rounded-3xl w-full h-full overflow-hidden shadow-md from-[var(--bg)] to-[var(--bg2)] transition-colors duration-300 bg-gradient-to-b">
+		<div className="relative flex rounded-3xl w-full overflow-hidden shadow-md from-[var(--bg)] to-[var(--bg2)] transition-colors duration-300 bg-gradient-to-b">
 			<Image src={img} width={1920} height={1080} alt="" className="absolute inset-0 w-[120%] h-[120%] object-cover"/>
 			<Link
 				className="absolute inset-0 w-full h-full object-cover peer z-20"

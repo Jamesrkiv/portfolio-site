@@ -21,7 +21,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 	useEffect(() => {
 		if (activeImage) {
 			document.body.style.overflow = "hidden";
-		} else {
+		}
+		else {
 			document.body.style.overflow = "";
 		}
 		return () => {

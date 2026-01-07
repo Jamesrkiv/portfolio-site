@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { getProject } from "@/app/portfolio/projects";
 import { EmblaOptionsType } from 'embla-carousel'
 import EmblaCarousel from "@/components/layout/EmblaCarousel";
-import QuickLinks from "@/app/app-content/QuickLinks";
 
 const emblaOptions: EmblaOptionsType = { loop: true };
 
@@ -58,13 +57,11 @@ export default async function ProjectPage({params}: {params: Promise<{slug: stri
 									className="accent-grad mt-12 mr-auto ml-10 md:ml-24 py-2 px-4 rounded-full hover:opacity-80 text-white"
 									target="_blank"
 									title="View GitHub Repo"
-								>View on GitHub</a>
+								>{"View on GitHub"}</a>
 							}
 						</div>
 					</div>
 				</div>
-				{/* Footer Section */}
-				<QuickLinks/>
 			</div>
 		</main>
 	);

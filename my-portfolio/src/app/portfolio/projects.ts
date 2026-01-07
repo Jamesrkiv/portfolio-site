@@ -4,7 +4,8 @@ export type Project = {
 	highlight?: boolean;
 	summary: string;
 	tags: string[];
-	thumbnail: string;
+	thumbnail?: string;
+	cover?: string;
 	images?: {src: string, name: string}[];
 	repo?: string;
 	body: string;
@@ -18,6 +19,7 @@ export const projects: Project[] = [
 		summary: "A responsive internal web application designed to streamline access to pharmacy and contact information.",
 		tags: ["React", "Vite", "Tailwind", "Node.js", "Express", "PostgreSQL"],
 		thumbnail: "/images/pharm-info-site/pharm_thumbnail.png",
+		cover: "/images/pharm-info-site/main_page.png",
 		images: [
 			{
 				src: "/images/pharm-info-site/main_page.png",
@@ -55,6 +57,7 @@ export const projects: Project[] = [
 		summary: "A discord bot created for my friends utilizing Discord.js. Functionality is centered around playing music and other minor utilities.",
 		tags: ["Node.js"],
 		thumbnail: "/images/djs-bot/djs_thumbnail.png",
+		cover: "/images/djs-bot/bot_invite.png",
 		images: [
 			{
 				src: "/images/djs-bot/bot_invite.png",
@@ -88,10 +91,9 @@ export const projects: Project[] = [
 	{
 		slug: "TodoList",
 		title: "To-Do List",
-		highlight: true,
 		summary: "A simple, lightweight to-do list app for tracking tasks in Microsoft Windows.",
 		tags: ["Node.js", "Electron"],
-		thumbnail: "/images/placeholder.jpg",
+		cover: "/images/todo-list/darkmode.png",
 		images: [
 			{
 				src: "/images/todo-list/darkmode.png",
@@ -116,6 +118,15 @@ export const projects: Project[] = [
 		],
 		repo: "https://github.com/Jamesrkiv/TodoList",
 		body: "Project body placeholder"
+	},
+
+	{
+		slug: "architecture",
+		title: "My Portfolio Site",
+		summary: "A portfolio for my projects, both personal and professional.",
+		tags: ["Next.js", "React", "Tailwind", "Node.js"],
+		repo: "https://github.com/Jamesrkiv/portfolio-site",
+		body: "This website serves as a central place to showcase my personal and professional projects, providing context around what each project does, how it was built, and the problems it was intended to solve. Rather than using a prebuilt theme or static site template, the portfolio was designed and implemented as a custom web application using Next.js and React, with Tailwind CSS used for styling and responsive layout.\n\nThe site is organized to make browsing projects straightforward while remaining easy to extend as new work is added. Individual project pages highlight the tools and technologies involved and include links to source code or related resources where applicable. This portfolio will continue to evolve as new projects are added and existing ones are refined.\n\nNext.js is used to handle routing, page composition, and rendering, allowing the site to scale cleanly as content grows. The overall design prioritizes clarity and usability across screen sizes, with consistent navigation and visual structure throughout."
 	},
 ];
 

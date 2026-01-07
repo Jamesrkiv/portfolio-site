@@ -72,20 +72,20 @@ export default function LandingArea() {
 					</div>
 				</div>
 				{/* Portfolio Highlights */}
-				<p className="px-4">Highlighted Projects</p>
-				<div className="flex-1 flex flex-col md:flex-row w-full h-full">
-					<div className="flex-2 md:p-4 px-4 py-2">
+				<p className="px-4 opacity-60 font-light">{"Highlighted Projects"}</p>
+				<div className="flex-1 flex flex-col sm:flex-row w-full h-full">
+					<div className="flex sm:p-4 px-4 py-2 grow">
 						<PortfolioHighlight
 							title={highlights[0].title}
 							path={`portfolio/${highlights[0].slug}`}
-							img={highlights[0].thumbnail}
+							img={highlights[0].thumbnail || "/images/placeholder.jpg"}
 						/>
 					</div>
-					<div className="flex-2 md:p-4 px-4 py-2">
+					<div className="flex sm:p-4 px-4 py-2 grow">
 						<PortfolioHighlight
 							title={highlights[1].title}
 							path={`portfolio/${highlights[1].slug}`}
-							img={highlights[1].thumbnail}
+							img={highlights[1].thumbnail || "/images/placeholder.jpg"}
 						/>
 					</div>
 				</div>
