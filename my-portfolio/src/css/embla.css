@@ -21,6 +21,10 @@
 	padding-left: 0;
 }
 
+.embla__slide.is-active {
+	border: 2px solid red;
+}
+
 .embla__dots {
 	display: flex;
 	flex-wrap: wrap;

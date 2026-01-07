@@ -3,7 +3,11 @@ import { getProject } from "@/app/portfolio/projects";
 import { EmblaOptionsType } from 'embla-carousel'
 import EmblaCarousel from "@/components/layout/EmblaCarousel";
 
-const emblaOptions: EmblaOptionsType = { loop: true };
+const emblaOptions: EmblaOptionsType = {
+	loop: true,
+	containScroll: "keepSnaps",
+	slidesToScroll: 1
+};
 
 export default async function ProjectPage({params}: {params: Promise<{slug: string}>}) {
 	const { slug } = await params;

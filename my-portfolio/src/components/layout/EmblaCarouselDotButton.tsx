@@ -12,24 +12,26 @@ type UseDotButtonType = {
 	onDotButtonClick: (index: number) => void;
 };
 
-export const useDotButton = (emblaApi: EmblaCarouselType | undefined): UseDotButtonType => {
+export const useDotButton = (emblaApi: EmblaCarouselType | undefined, slideCount: number): UseDotButtonType => {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
 	const onDotButtonClick = useCallback(
 		(index: number) => {
-			if (!emblaApi) return
-			emblaApi.scrollTo(index)
-		},
-		[emblaApi]
-	);
+			if (!emblaApi) return;
+			emblaApi.scrollTo(index);
+			setSelectedIndex(index);
+	}, [emblaApi]);
 
 	const onInit = useCallback((emblaApi: EmblaCarouselType) => {
-		setScrollSnaps(emblaApi.scrollSnapList())
-	}, []);
+		const canScroll = emblaApi.canScrollNext() || emblaApi.canScrollPrev();
+		setScrollSnaps(
+			canScroll ? emblaApi.scrollSnapList() : Array.from({length: slideCount}, (_, i) => i)
+		);
+	}, [slideCount]);
 
 	const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-		setSelectedIndex(emblaApi.selectedScrollSnap())
+		setSelectedIndex(emblaApi.selectedScrollSnap());
 	}, []);
 
 	useEffect(() => {

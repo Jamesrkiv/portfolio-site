@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import Fuse from "fuse.js";
 import SearchBar from "@/components/layout/SearchBar";
+import XIcon from "$/icons/XIcon";
 import type { Project } from "@/app/portfolio/projects";
 
 type Props = {
@@ -11,13 +13,57 @@ type Props = {
 	taglist: string[];
 };
 
+const TAG_ALIASES: Record<string, string[]> = {
+	"JavaScript": ["js", "ecmascript"],
+	"TypeScript": ["ts", "ecmascript"],
+	"PostgreSQL": ["sql", "postgres"],
+};
+
 export default function ProjectsClient({ projects, taglist }: Props) {
 	const [search, setSearch] = useState<string>("");
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-	const filteredTags = taglist.filter(tag =>
-		tag.toLowerCase().includes(search.toLowerCase())
-	);
+	function normalize(str: string) {
+		return str
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, " ")
+			.replace(/\s+/g, " ")
+			.trim();
+	}
+
+	const fuse = useMemo(() => {
+		// Build on page load
+		const entries = taglist.map(tag => ({
+			tag,
+			norm: normalize(tag),
+			aka: TAG_ALIASES[tag]?.map(normalize) ?? [],
+		}));
+
+		return new Fuse(entries, {
+			threshold: 0.4,       // Fuzziness (0.3 stricter, 0.45 looser)
+			ignoreLocation: true, // Doesn't care where match occurs
+			distance: 100,
+			keys: [
+				{ name: "tag", weight: 0.6 },
+				{ name: "norm", weight: 0.3 },
+				{ name: "aka", weight: 0.1 },
+			],
+		});
+	}, [taglist]);
+
+	const filteredTags = useMemo(() => {
+		const query = search.trim();
+		if (!query) return taglist;
+
+		// Search both raw and normalized query; merge + dedupe
+		const normQuery = normalize(query);
+		const hits = [
+			...fuse.search(query).map(r => r.item.tag),
+			...fuse.search(normQuery).map(r => r.item.tag),
+		];
+
+		return Array.from(new Set(hits));
+	}, [search, taglist, fuse]);
 
 	const filteredProjects = projects.filter(project => {
 		if (selectedTags.length === 0) return true;
@@ -34,10 +80,6 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 				: [...prev, tag]
 		);
 	};
-
-	function handleSearch(value: string) {
-		setSearch(value);
-	}
 
 	return (
 		<main className="flex flex-col min-h-[calc(100svh-16.72rem)]">
@@ -60,11 +102,11 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 					</p>
 					{/* Tag Search */}
 					<div className="mb-2">
-						<SearchBar searchValue={handleSearch} phText="Search tags..."/>
+						<SearchBar searchValue={(value: string) => {setSearch(value)}} phText="Search tags..."/>
 					</div>
 					{/* Tag List */}
 					<div className="flex flex-wrap gap-1">
-						{filteredTags.map((tag, i) => (
+						{filteredTags.length > 0 && filteredTags.map((tag, i) => (
 							<div key={`tag${i}`}>
 								{/* Tag */}
 								<label className={`
@@ -91,7 +133,21 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 								</label>
 							</div>
 						))}
+						{filteredTags.length === 0 && <p className="font-light opacity-80 select-none">{"No matching tags found."}</p>}
 					</div>
+					{/* Tag Clear Button */}
+					{selectedTags.length > 0 &&
+						<div className="flex mt-3">
+							<button
+								type="button"
+								className="mr-1 cursor-pointer"
+								onClick={() => setSelectedTags([])}
+							>
+								<XIcon className="my-auto text-[var(--fg)]/50 w-4 h-4"/>
+							</button>
+							<p className="font-light text-sm opacity-50 select-none">{`${selectedTags.length} tag(s) selected`}</p>
+						</div>
+					}
 				</div>
 			</div>
 			{/* Primary Container */}
@@ -133,7 +189,7 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 											${filteredProjects.length > 1 ? 'mt-6' : ''}
 										`}
 								>
-									<p>⚙️ Learn more about this site.</p>
+									<p className="select-none">{"⚙️ Learn more about this site."}</p>
 								</Link>
 							)}
 						</div>

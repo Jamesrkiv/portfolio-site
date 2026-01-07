@@ -6,7 +6,7 @@ export type Project = {
 	tags: string[];
 	thumbnail?: string;
 	cover?: string;
-	images?: {src: string, name: string}[];
+	images?: {src: string, name: string, desc: string}[];
 	repo?: string;
 	body: string;
 };
@@ -17,33 +17,39 @@ export const projects: Project[] = [
 		title: "Pharmacy Info Site",
 		highlight: true,
 		summary: "A responsive internal web application designed to streamline access to pharmacy and contact information.",
-		tags: ["React", "Vite", "Tailwind", "Node.js", "Express", "PostgreSQL"],
+		tags: ["React", "Vite", "Tailwind", "Node.js", "Express", "PostgreSQL", "JavaScript", "HTML", "CSS"],
 		thumbnail: "/images/pharm-info-site/pharm_thumbnail.png",
 		cover: "/images/pharm-info-site/main_page.png",
 		images: [
 			{
 				src: "/images/pharm-info-site/main_page.png",
-				name: "Main Page"
+				name: "Main Page",
+				desc: "The main page of the site. Shows the contact on the left and specific contact info on the right."
 			},
 			{
 				src: "/images/pharm-info-site/audit_log.png",
-				name: "Audit Log"
+				name: "Audit Log",
+				desc: "Displays detailed information on any changes, deletions, etc. made within the site."
 			},
 			{
 				src: "/images/pharm-info-site/new_contact.png",
-				name: "New Contact Form"
+				name: "New Contact Form",
+				desc: "The form used for creating new contacts. Fields are made available based on the user's access level."
 			},
 			{
 				src: "/images/pharm-info-site/mobile_friendly.png",
-				name: "Mobile View"
+				name: "Mobile View",
+				desc: "The site was designed with mobile devices in mind. The UI scales to fit smaller screen sizes."
 			},
 			{
 				src: "/images/pharm-info-site/login.png",
-				name: "Login Panel"
+				name: "Login Panel",
+				desc: "User accounts regulate access to certain site features and ensure traceability in the audit log."
 			},
 			{
 				src: "/images/pharm-info-site/admin_account.png",
-				name: "Account Panel (Admin)"
+				name: "Account Panel (Admin)",
+				desc: "Users are able to view their role as well as access admin tools if they have the applicable role(s)."
 			},
 		],
 		repo: "https://github.com/JamesHHC/Pharm-Info-Site",
@@ -55,33 +61,39 @@ export const projects: Project[] = [
 		title: "Discord Bot",
 		highlight: true,
 		summary: "A discord bot created for my friends utilizing Discord.js. Functionality is centered around playing music and other minor utilities.",
-		tags: ["Node.js"],
+		tags: ["Node.js", "JavaScript"],
 		thumbnail: "/images/djs-bot/djs_thumbnail.png",
 		cover: "/images/djs-bot/bot_invite.png",
 		images: [
 			{
 				src: "/images/djs-bot/bot_invite.png",
-				name: "Bot Invite Page"
+				name: "Bot Invite Page",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/djs-bot/music_commands.png",
-				name: "Music Commands"
+				name: "Music Commands",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/djs-bot/help_options.png",
-				name: "Help Options"
+				name: "Help Options",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/djs-bot/music_queue.png",
-				name: "Music Queue"
+				name: "Music Queue",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/djs-bot/music_ui.png",
-				name: "Music UI"
+				name: "Music UI",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/djs-bot/avatar.png",
-				name: "Avatar Command"
+				name: "Avatar Command",
+				desc: "Placeholder"
 			},
 		],
 		repo: "https://github.com/Jamesrkiv/d.js-bot",
@@ -92,28 +104,33 @@ export const projects: Project[] = [
 		slug: "TodoList",
 		title: "To-Do List",
 		summary: "A simple, lightweight to-do list app for tracking tasks in Microsoft Windows.",
-		tags: ["Node.js", "Electron"],
+		tags: ["Node.js", "Electron", "JavaScript", "HTML", "CSS"],
 		cover: "/images/todo-list/darkmode.png",
 		images: [
 			{
 				src: "/images/todo-list/darkmode.png",
-				name: "To-Do List Application (Darkmode)"
+				name: "To-Do List Application (Darkmode)",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/todo-list/lightmode.png",
-				name: "To-Do List Application (Lightmode)"
+				name: "To-Do List Application (Lightmode)",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/todo-list/new_item.png",
-				name: "New Item Panel"
+				name: "New Item Panel",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/todo-list/rescaling.png",
-				name: "Scaling Design"
+				name: "Scaling Design",
+				desc: "Placeholder"
 			},
 			{
 				src: "/images/todo-list/sort_methods.png",
-				name: "Quick Sorting"
+				name: "Quick Sorting",
+				desc: "Placeholder"
 			},
 		],
 		repo: "https://github.com/Jamesrkiv/TodoList",
@@ -124,7 +141,7 @@ export const projects: Project[] = [
 		slug: "architecture",
 		title: "My Portfolio Site",
 		summary: "A portfolio for my projects, both personal and professional.",
-		tags: ["Next.js", "React", "Tailwind", "Node.js"],
+		tags: ["Next.js", "React", "Tailwind", "Node.js", "TypeScript", "JavaScript", "HTML", "CSS"],
 		repo: "https://github.com/Jamesrkiv/portfolio-site",
 		body: "This website serves as a central place to showcase my personal and professional projects, providing context around what each project does, how it was built, and the problems it was intended to solve. Rather than using a prebuilt theme or static site template, the portfolio was designed and implemented as a custom web application using Next.js and React, with Tailwind CSS used for styling and responsive layout.\n\nThe site is organized to make browsing projects straightforward while remaining easy to extend as new work is added. Individual project pages highlight the tools and technologies involved and include links to source code or related resources where applicable. This portfolio will continue to evolve as new projects are added and existing ones are refined.\n\nNext.js is used to handle routing, page composition, and rendering, allowing the site to scale cleanly as content grows. The overall design prioritizes clarity and usability across screen sizes, with consistent navigation and visual structure throughout."
 	},

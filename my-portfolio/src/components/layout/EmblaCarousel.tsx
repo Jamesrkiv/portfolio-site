@@ -8,14 +8,14 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
 
 type PropType = {
-	slides: { src: string, name: string }[];
+	slides: { src: string, name: string, desc: string }[];
 	options?: EmblaOptionsType;
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
 	const { slides, options } = props;
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
-	const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
+	const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi, slides.length);
 
 	const [activeImage, setActiveImage] = useState<{ src: string, name: string } | null>(null);
 	useEffect(() => {
@@ -43,7 +43,13 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 									style={{objectFit:"cover", objectPosition: "top left"}}
 									alt={img.name || `img${i}`}
 									sizes="(max-width: 768px) 100vh"
-									className="rounded-3xl border-1 border-[var(--bg2)] hover:opacity-90 cursor-pointer"
+									className={`
+										rounded-3xl cursor-pointer
+										${i === selectedIndex ? 
+											'border-3 border-[rgb(var(--accent-grad-l))] hover:opacity-90' : 
+											'border-1 border-[var(--bg2)] opacity-50 hover:opacity-40'
+										}
+									`}
 									onClick={() => setActiveImage(img)}
 								/>
 							</div>
@@ -60,9 +66,36 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 					/>
 				))}
 			</div>
+			{/* Image Description */}
+			{ slides[selectedIndex].name &&
+				<div className="flex px-6 md:px-20">
+					<div className="relative flex-col mt-2 mx-auto bg-[rgb(var(--accent-grad-l))] py-2 px-4 rounded-xl overflow-hidden">
+						{/* Description Text */}
+						<div className="relative z-20 text-white">
+							<p className="flex justify-center font-bold">
+								{slides[selectedIndex].name}
+							</p>
+							<p className="flex justify-center font-light">
+								{slides[selectedIndex]?.desc}
+							</p>
+						</div>
+						{/* Background Image */}
+						<Image
+							src="/images/charlotte.jpg" alt="Desc Background Img"
+							priority={true}
+							height={1080} width={1920}
+							className={`
+								absolute inset-0 w-[100%] h-[100%] object-cover select-none
+								mix-blend-luminosity opacity-30 blur-[2px] z-10
+								mask-r-from-30% md:mask-r-from-60% mask-r-to-100%
+							`}
+						/>
+					</div>
+				</div>
+			}
 		</section>
 		{/* Fullscreen Modal */}
-		{activeImage && (
+		{activeImage &&
 			<div
 				className="fixed inset-0 bg-black/80 flex flex-col items-center justify-center z-50 p-10"
 				onClick={() => setActiveImage(null)}
@@ -75,13 +108,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 						className="rounded-lg"
 					/>
 				</div>
-				<div className="header header-bg mt-2 mx-10 p-2 rounded">
-					<p className="">
-						{activeImage.name}
-					</p>
-				</div>
 			</div>
-		)}
+		}
 	</>);
 }
 
