@@ -30,7 +30,7 @@ export default function LandingArea() {
 								`}
 							</p>
 							{/* Buttons */}
-							<div className="flex mb-2 sm:mb-0 space-x-3">
+							<div className="flex mb-2 space-x-3">
 								<Link
 									href="/portfolio"
 									className="hover:opacity-80"
@@ -72,21 +72,25 @@ export default function LandingArea() {
 					</div>
 				</div>
 				{/* Portfolio Highlights */}
-				<p className="px-4 opacity-60 font-light">{"Highlighted Projects"}</p>
-				<div className="flex-1 flex flex-col sm:flex-row w-full h-full">
-					<div className="flex sm:p-4 px-4 py-2 grow">
-						<PortfolioHighlight
-							title={highlights[0].title}
-							path={`portfolio/${highlights[0].slug}`}
-							img={highlights[0].thumbnail || "/images/placeholder.jpg"}
-						/>
-					</div>
-					<div className="flex sm:p-4 px-4 py-2 grow">
-						<PortfolioHighlight
-							title={highlights[1].title}
-							path={`portfolio/${highlights[1].slug}`}
-							img={highlights[1].thumbnail || "/images/placeholder.jpg"}
-						/>
+				<div className="flex flex-col flex-3">
+					<p className="px-4 opacity-60 font-light">{"Highlighted Projects"}</p>
+					<div className="flex flex-col sm:flex-row grow min-h-40">
+						{/* Highlight One */}
+						<div className="flex sm:p-4 px-4 py-2 grow">
+							<PortfolioHighlight
+								title={highlights[0].title}
+								path={`portfolio/${highlights[0].slug}`}
+								img={highlights[0].thumbnail || "/images/placeholder.jpg"}
+							/>
+						</div>
+						{/* Highlight Two */}
+						<div className="flex sm:p-4 px-4 py-2 grow">
+							<PortfolioHighlight
+								title={highlights[1].title}
+								path={`portfolio/${highlights[1].slug}`}
+								img={highlights[1].thumbnail || "/images/placeholder.jpg"}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
