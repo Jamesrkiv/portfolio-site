@@ -42,7 +42,7 @@ export default async function ArchitecturePage() {
 							{/* GitHub Link */}
 							<a
 								href={project.repo}
-								className="accent-grad mt-12 mr-auto ml-10 md:ml-24 py-2 px-4 rounded-full hover:opacity-80 text-white mb-6 md:mb-0"
+								className="bg-[rgb(var(--accent-grad-l))] mt-12 mr-auto ml-10 md:ml-24 py-2 px-4 rounded-full hover:opacity-80 text-white mb-6 md:mb-0"
 								target="_blank"
 								title="View GitHub Repo"
 							>{"View on GitHub"}</a>
