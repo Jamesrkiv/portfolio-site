@@ -6,6 +6,8 @@ import { EmblaOptionsType } from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
+import CaretLeft from "$/icons/CaretLeft";
+import CaretRight from "$/icons/CaretRight";
 
 type PropType = {
 	slides: { src: string, name: string, desc: string }[];
@@ -16,8 +18,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 	const { slides, options } = props;
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 	const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi, slides.length);
-
 	const [activeImage, setActiveImage] = useState<{ src: string, name: string } | null>(null);
+
 	useEffect(() => {
 		if (activeImage) {
 			document.body.style.overflow = "hidden";
@@ -30,34 +32,47 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 		};
 	}, [activeImage]);
 
+	const goToPrev = () => emblaApi?.scrollPrev();
+  	const goToNext = () => emblaApi?.scrollNext();
+
 	return (<>
 		<section className="embla">
 			<div className="embla__viewport" ref={emblaRef}>
-				<div className="embla__container">
+				<div className="embla__container -mx-2">
 					{slides.map((img, i) => (
-						<div className="embla__slide bg-black/20 rounded-3xl mx-2" key={`i${i}`}>
-							<div className="relative w-70 h-70 md:w-100 md:h-100 lg:w-120 lg:h-120">
-								<Image
-									src={img.src}
-									fill={true}
-									style={{objectFit:"cover", objectPosition: "top left"}}
-									alt={img.name || `img${i}`}
-									sizes="(max-width: 768px) 100vh"
-									className={`
-										rounded-3xl cursor-pointer
-										${i === selectedIndex ? 
-											'border-3 border-[rgb(var(--accent-grad-l))] hover:opacity-90' : 
-											'border-1 border-[var(--bg2)] opacity-50 hover:opacity-40'
-										}
-									`}
-									onClick={() => setActiveImage(img)}
-								/>
+						<div className="embla__slide mx-2" key={`i${i}`}>
+							<div className="bg-black/20 rounded-3xl">
+								<div className="relative w-70 h-70 md:w-100 md:h-100 lg:w-120 lg:h-120">
+									<Image
+										src={img.src}
+										fill={true}
+										style={{objectFit:"cover", objectPosition: "top left"}}
+										alt={img.name || `img${i}`}
+										sizes="(max-width: 768px) 100vh"
+										className={`
+											rounded-3xl cursor-pointer
+											${i === selectedIndex ? 
+												'border-3 border-[rgb(var(--accent-grad-l))] hover:opacity-90' : 
+												'border-1 border-[var(--bg2)] opacity-50 hover:opacity-40'
+											}
+										`}
+										onClick={() => setActiveImage(img)}
+									/>
+								</div>
 							</div>
 						</div>
 					))}
 				</div>
 			</div>
 			<div className="embla__dots">
+				{/* Left arrow */}
+				<button
+					type="button"
+					onClick={goToPrev}
+					className="embla__arrow"
+					aria-label="Previous slide"
+				><CaretLeft className="w-full" size={20}/></button>
+				{/* Dots */}
 				{scrollSnaps.map((_, i) => (
 					<DotButton
 						key={`d${i}`}
@@ -65,6 +80,13 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 						className={'embla__dot'.concat(i === selectedIndex ? ' embla__dot--selected' : '')}
 					/>
 				))}
+				{/* Right arrow */}
+				<button
+					type="button"
+					onClick={goToNext}
+					className="embla__arrow"
+					aria-label="Next slide"
+				><CaretRight className="w-full" size={20}/></button>
 			</div>
 			{/* Image Description */}
 			{ slides[selectedIndex].name &&
@@ -105,7 +127,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 						src={activeImage.src}
 						alt="Expanded View" fill
 						style={{objectFit: "contain"}}
-						className="rounded-lg"
+						className="rounded-lg touch-pinch-zoom"
 					/>
 				</div>
 			</div>

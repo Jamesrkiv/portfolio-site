@@ -44,7 +44,7 @@ export default async function ProjectPage({params}: {params: Promise<{slug: stri
 					<div className="flex flex-col section-bg w-full pt-8 pb-2 mb-6 md:mb-0">
 						{/* Project Images */}
 						{project.images && 
-							<div className="mb-8 mx-auto">
+							<div className="mb-8">
 								<EmblaCarousel slides={project.images} options={emblaOptions}/>
 							</div>
 						}

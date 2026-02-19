@@ -171,10 +171,9 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 												height={1080} width={1920}
 												className={`
 													absolute inset-0 w-[100%] h-[100%] object-cover
-													select-none z-0
+													select-none z-0 scale-[1.1]
 													opacity-40 blur-[2px] sm:opacity-60 sm:blur-[1px]
-													sm:ml-5
-													sm:mask-l-from-20% sm:mask-l-to-100%
+													sm:ml-5 sm:mask-l-from-20% sm:mask-l-to-100%
 												`}
 											/>}
 										</div>
