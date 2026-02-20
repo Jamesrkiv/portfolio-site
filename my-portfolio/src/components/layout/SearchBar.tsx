@@ -39,6 +39,7 @@ export default function SearchBar({
 					focus:outline-none
 					p-3 ps-9
 					inset-shadow-sm
+					select-none
 				`}
 				placeholder={phText}
 				value={search}

@@ -11,13 +11,27 @@ export type Project = {
 	body: string;
 };
 
+export type TagCount = {
+	tag: string;
+	count: number;
+}
+
 export const projects: Project[] = [
+	{
+		slug: "architecture",
+		title: "My Portfolio Site",
+		summary: "A portfolio for my projects, both personal and professional.",
+		tags: ["Next.js", "React", "Tailwind", "Node.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+		repo: "https://github.com/Jamesrkiv/portfolio-site",
+		body: "This website serves as a central place to showcase my personal and professional projects, providing context around what each project does, how it was built, and the problems it was intended to solve. Rather than using a prebuilt theme or static site template, the portfolio was designed and implemented as a custom web application using Next.js and React, with Tailwind CSS used for styling and responsive layout.\n\nThe site is organized to make browsing projects straightforward while remaining easy to extend as new work is added. Individual project pages highlight the tools and technologies involved and include links to source code or related resources where applicable. This portfolio will continue to evolve as new projects are added and existing ones are refined.\n\nNext.js is used to handle routing, page composition, and rendering, allowing the site to scale cleanly as content grows. The overall design prioritizes clarity and usability across screen sizes, with consistent navigation and visual structure throughout."
+	},
+
 	{
 		slug: "PharmInfoSite",
 		title: "Pharmacy Info Site",
 		highlight: true,
 		summary: "A responsive internal web application designed to streamline access to pharmacy and contact information.",
-		tags: ["React", "Vite", "Tailwind", "Node.js", "Express", "PostgreSQL", "JavaScript", "HTML", "CSS"],
+		tags: ["Express", "React", "PostgreSQL", "Vite", "Tailwind", "Node.js", "JavaScript", "HTML", "CSS"],
 		thumbnail: "/images/pharm-info-site/pharm_thumbnail.png",
 		cover: "/images/pharm-info-site/main_page.png",
 		images: [
@@ -136,15 +150,6 @@ export const projects: Project[] = [
 		repo: "https://github.com/Jamesrkiv/TodoList",
 		body: "Project body placeholder"
 	},
-
-	{
-		slug: "architecture",
-		title: "My Portfolio Site",
-		summary: "A portfolio for my projects, both personal and professional.",
-		tags: ["Next.js", "React", "Tailwind", "Node.js", "TypeScript", "JavaScript", "HTML", "CSS"],
-		repo: "https://github.com/Jamesrkiv/portfolio-site",
-		body: "This website serves as a central place to showcase my personal and professional projects, providing context around what each project does, how it was built, and the problems it was intended to solve. Rather than using a prebuilt theme or static site template, the portfolio was designed and implemented as a custom web application using Next.js and React, with Tailwind CSS used for styling and responsive layout.\n\nThe site is organized to make browsing projects straightforward while remaining easy to extend as new work is added. Individual project pages highlight the tools and technologies involved and include links to source code or related resources where applicable. This portfolio will continue to evolve as new projects are added and existing ones are refined.\n\nNext.js is used to handle routing, page composition, and rendering, allowing the site to scale cleanly as content grows. The overall design prioritizes clarity and usability across screen sizes, with consistent navigation and visual structure throughout."
-	},
 ];
 
 export function getProject(slug: string) {
@@ -157,4 +162,16 @@ export function getHighlights() {
 
 export function getAllProjects() {
 	return projects;
+}
+
+export function getTagList() {
+	const tagMap: Record<string, number> = {};
+
+	for (const proj of projects) {
+		for (const tag of proj.tags) {
+			tagMap[tag] = (tagMap[tag] || 0) + 1;
+		}
+	}
+
+	return Object.entries(tagMap).map(([tag, count]) => ({tag, count})).sort((a, b) => b.count - a.count);
 }

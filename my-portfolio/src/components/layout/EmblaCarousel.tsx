@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import { EmblaOptionsType } from 'embla-carousel';
-import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
 import CaretLeft from "$/icons/CaretLeft";
@@ -16,7 +15,7 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
 	const { slides, options } = props;
-	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
+	const [emblaRef, emblaApi] = useEmblaCarousel(options);
 	const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi, slides.length);
 	const [activeImage, setActiveImage] = useState<{ src: string, name: string } | null>(null);
 
@@ -50,7 +49,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 										alt={img.name || `img${i}`}
 										sizes="(max-width: 768px) 100vh"
 										className={`
-											rounded-3xl cursor-pointer
+											rounded-3xl cursor-pointer select-none
 											${i === selectedIndex ? 
 												'border-3 border-[rgb(var(--accent-grad-l))] hover:opacity-90' : 
 												'border-1 border-[var(--bg2)] opacity-50 hover:opacity-40'

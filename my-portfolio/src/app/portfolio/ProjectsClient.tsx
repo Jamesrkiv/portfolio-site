@@ -6,11 +6,12 @@ import { useState, useMemo } from "react";
 import Fuse from "fuse.js";
 import SearchBar from "@/components/layout/SearchBar";
 import XIcon from "$/icons/XIcon";
-import type { Project } from "@/app/portfolio/projects";
+import type { Project, TagCount } from "@/app/portfolio/projects";
+import Gear from "$/icons/Gear";
 
 type Props = {
 	projects: Project[];
-	taglist: string[];
+	taglist: TagCount[];
 };
 
 const TAG_ALIASES: Record<string, string[]> = {
@@ -19,9 +20,15 @@ const TAG_ALIASES: Record<string, string[]> = {
 	"PostgreSQL": ["sql", "postgres"],
 };
 
+const COLLAPSED_COUNT = 8;
+
 export default function ProjectsClient({ projects, taglist }: Props) {
 	const [search, setSearch] = useState<string>("");
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
+	const [tagsExpanded, setTagsExpanded] = useState(false);
+
+	const selectedSet = useMemo(() => new Set(selectedTags), [selectedTags]);
+	const shouldExpand = tagsExpanded || search.trim().length > 0;
 
 	function normalize(str: string) {
 		return str
@@ -33,8 +40,9 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 
 	const fuse = useMemo(() => {
 		// Build on page load
-		const entries = taglist.map(tag => ({
+		const entries = taglist.map(({tag, count}) => ({
 			tag,
+			count,
 			norm: normalize(tag),
 			aka: TAG_ALIASES[tag]?.map(normalize) ?? [],
 		}));
@@ -58,8 +66,8 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 		// Search both raw and normalized query; merge + dedupe
 		const normQuery = normalize(query);
 		const hits = [
-			...fuse.search(query).map(r => r.item.tag),
-			...fuse.search(normQuery).map(r => r.item.tag),
+			...fuse.search(query).map(r => r.item),
+			...fuse.search(normQuery).map(r => r.item),
 		];
 
 		return Array.from(new Set(hits));
@@ -73,6 +81,20 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 		return false;
 	});
 
+	const visibleTags = useMemo(() => {
+		if (shouldExpand) return filteredTags;
+
+		const top = filteredTags.slice(0, COLLAPSED_COUNT);
+		const topSet = new Set(top.map(t => t.tag));
+
+		// Always include selected tags
+		const selectedNotInTop = filteredTags.filter(
+			t => selectedSet.has(t.tag) && !topSet.has(t.tag)
+		);
+
+		return [...selectedNotInTop, ...top];
+	}, [shouldExpand, filteredTags, selectedSet]);
+
 	const handleTagChange = (tag: string) => {
 		setSelectedTags(prev =>
 			prev.includes(tag)
@@ -80,6 +102,8 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 				: [...prev, tag]
 		);
 	};
+
+	const showToggle = !shouldExpand && filteredTags.length > COLLAPSED_COUNT;
 
 	return (
 		<main className="flex flex-col min-h-[calc(100svh-16.72rem)]">
@@ -106,20 +130,20 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 					</div>
 					{/* Tag List */}
 					<div className="flex flex-wrap gap-1">
-						{filteredTags.length > 0 && filteredTags.map((tag, i) => (
-							<div key={`tag${i}`}>
+						{filteredTags.length > 0 && visibleTags.map((tagitem) => (
+							<div key={`tag${tagitem.tag}`}>
 								{/* Tag */}
 								<label className={`
 										border border-1 border-[rgb(var(--accent-grad-l))]
 										bg-[var(--bg2)]/20 px-3 rounded-full
 										flex flex-row
 									`}
-									htmlFor={`tagc_${i}`}
+									htmlFor={`tagc_${tagitem.tag}`}
 								>
 									<input
-										tabIndex={-1} type="checkbox" id={`tagc_${i}`} value={tag}
-										checked={selectedTags.includes(tag)}
-										onChange={() => handleTagChange(tag)}
+										tabIndex={-1} type="checkbox" id={`tagc_${tagitem.tag}`} value={tagitem.tag}
+										checked={selectedTags.includes(tagitem.tag)}
+										onChange={() => handleTagChange(tagitem.tag)}
 										className={`
 											appearance-none
 											mr-1.5 w-4 h-4 rounded-full
@@ -129,10 +153,26 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 											focus:outline-cyan-500/60
 										`}
 									/>
-									<span className="font-light opacity-80 select-none">{tag}</span>
+									<span className="font-light opacity-80 select-none">{`${tagitem.tag} - ${tagitem.count}`}</span>
 								</label>
 							</div>
 						))}
+						{/* Show More */}
+						{filteredTags.length > COLLAPSED_COUNT && search.trim().length === 0 && (
+							<button
+								type="button"
+								onClick={() => setTagsExpanded(v => !v)}
+								className={`
+									border border-1 border-[var(--fg)]/30
+									bg-[var(--bg2)]/20 px-3 rounded-full
+									flex flex-row
+									select-none text-[var(--fg)]/50
+								`}
+								aria-expanded={tagsExpanded}
+							>
+								{tagsExpanded ? "Show less" : `Show more (${filteredTags.length - COLLAPSED_COUNT})`}
+							</button>
+						)}
 						{filteredTags.length === 0 && <p className="font-light opacity-80 select-none">{"No matching tags found."}</p>}
 					</div>
 					{/* Tag Clear Button */}
@@ -155,6 +195,34 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 				<div className="flex flex-col w-full h-full p-4 gap-4">
 					{filteredProjects.map((proj, i) => (
 						<div key={`proj${i}`} className="flex">
+							{proj.slug === "architecture" && (
+								<div className="m-auto section-bg w-full h-full rounded-xl overflow-hidden">
+									<Link href="architecture" className="flex w-full h-full flex-col">
+										<div className="m-3 mx-8 sm:mx-12">
+											<div className="flex select-none font-bold">
+												<Gear className="my-auto mr-1 opacity-50"/><span className="opacity-80">{"About This Portfolio"}</span>
+											</div>
+											{/* Project Tags */}
+											<div className="flex flex-wrap gap-1 mt-1 text-sm">
+												{proj.tags.slice(0, 3).map((tag, i) =>
+													<div className="flex section-bg rounded-full border-1 border-[var(--fg)]/10" key={`pt${i}`}>
+														<p className="font-light mx-3 opacity-80">
+															{tag}	
+														</p>
+													</div>
+												)}
+												{(proj.tags.length - 3 > 0) &&
+													<div className="flex section-bg rounded-full border-1 border-[var(--fg)]/10">
+														<p className="font-light mx-3 opacity-80">
+															{`+${proj.tags.length - 3}`}	
+														</p>
+													</div>
+												}
+											</div>
+										</div>
+									</Link>
+								</div>
+							)}
 							{proj.slug !== "architecture" && (
 								<div className="m-auto section-bg w-full h-full rounded-xl overflow-hidden">
 									<Link href={`portfolio/${proj.slug}`} className="flex w-full h-full">
@@ -163,6 +231,23 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 											<div className="relative flex flex-col m-8 sm:mx-12 md:my-12 z-10">
 												<span className="text-xl font-bold">{proj.title}</span>
 												<span>{proj.summary}</span>
+												{/* Project Tags */}
+												<div className="flex flex-wrap gap-1 mt-1">
+													{proj.tags.slice(0, 3).map((tag, i) =>
+														<div className="flex section-bg rounded-full border-1 border-[var(--fg)]/10" key={`pt${i}`}>
+															<p className="text-md font-light mx-3 opacity-80">
+																{tag}	
+															</p>
+														</div>
+													)}
+													{(proj.tags.length - 3 > 0) &&
+														<div className="flex section-bg rounded-full border-1 border-[var(--fg)]/10">
+															<p className="text-md font-light mx-3 opacity-80">
+																{`+${proj.tags.length - 3}`}	
+															</p>
+														</div>
+													}
+												</div>
 											</div>
 											{/* Background image */}
 											{ proj.cover && <Image
@@ -179,17 +264,6 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 										</div>
 									</Link>
 								</div>
-							)}
-							{proj.slug === "architecture" && (
-								<Link
-									href="architecture"
-									className={`
-											flex mx-auto section-bg py-1 px-4 rounded-xl
-											${filteredProjects.length > 1 ? 'mt-6' : ''}
-										`}
-								>
-									<p className="select-none">{"⚙️ Learn more about this site."}</p>
-								</Link>
 							)}
 						</div>
 					))}

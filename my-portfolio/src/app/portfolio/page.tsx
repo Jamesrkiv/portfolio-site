@@ -1,12 +1,8 @@
-import { getAllProjects } from "@/app/portfolio/projects";
+import { getAllProjects, getTagList } from "@/app/portfolio/projects";
 import ProjectsClient from "./ProjectsClient";
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
 	const projects = getAllProjects();
-
-	// Get list of all unique tags
-	let taglist: string[] = [];
-	for (const proj of projects) taglist = [...new Set([...taglist, ...proj.tags])];
-
+	const taglist = await getTagList();
 	return <ProjectsClient projects={projects} taglist={taglist}/>;
 }
