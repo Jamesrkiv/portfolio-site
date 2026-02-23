@@ -7,7 +7,7 @@ import Fuse from "fuse.js";
 import SearchBar from "@/components/layout/SearchBar";
 import XIcon from "$/icons/XIcon";
 import type { Project, TagCount } from "@/app/portfolio/projects";
-import Gear from "$/icons/Gear";
+import CodeSlash from "$/icons/CodeSlash";
 
 type Props = {
 	projects: Project[];
@@ -165,7 +165,7 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 								className={`
 									border border-1 border-[var(--fg)]/30
 									bg-[var(--bg2)]/20 px-3 rounded-full
-									flex flex-row
+									flex flex-row font-light
 									select-none text-[var(--fg)]/50
 								`}
 								aria-expanded={tagsExpanded}
@@ -195,13 +195,23 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 				<div className="flex flex-col w-full h-full p-4 gap-4">
 					{filteredProjects.map((proj, i) => (
 						<div key={`proj${i}`} className="flex">
+							{/* About This Site */}
 							{proj.slug === "architecture" && (
-								<div className="m-auto section-bg w-full h-full rounded-xl overflow-hidden">
+								<div className={`
+									section-bg m-auto h-full w-full
+									rounded-xl overflow-hidden
+									border-l-6 border-[rgb(var(--accent-grad-l))]/70
+								`}>
 									<Link href="architecture" className="flex w-full h-full flex-col">
 										<div className="m-3 mx-8 sm:mx-12">
 											<div className="flex select-none font-bold">
-												<Gear className="my-auto mr-1 opacity-50"/><span className="opacity-80">{"About This Portfolio"}</span>
+												<CodeSlash className={`
+													my-auto mr-1 opacity-80
+													stroke-[1px] stroke-[var(--fg)]/80
+												`}/>
+												<span className="opacity-80">{"About This Portfolio"}</span>
 											</div>
+											<span className="font-light text-sm text-[var(--fg)]/70">{"Learn more about how this site was built."}</span>
 											{/* Project Tags */}
 											<div className="flex flex-wrap gap-1 mt-1 text-sm">
 												{proj.tags.slice(0, 3).map((tag, i) =>
@@ -213,7 +223,7 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 												)}
 												{(proj.tags.length - 3 > 0) &&
 													<div className="flex section-bg rounded-full border-1 border-[var(--fg)]/10">
-														<p className="font-light mx-3 opacity-80">
+														<p className="font-light mx-2 opacity-80">
 															{`+${proj.tags.length - 3}`}	
 														</p>
 													</div>
@@ -223,6 +233,7 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 									</Link>
 								</div>
 							)}
+							{/* All Projects */}
 							{proj.slug !== "architecture" && (
 								<div className="m-auto section-bg w-full h-full rounded-xl overflow-hidden">
 									<Link href={`portfolio/${proj.slug}`} className="flex w-full h-full">
@@ -230,7 +241,7 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 											{/* Project Details */}
 											<div className="relative flex flex-col m-8 sm:mx-12 md:my-12 z-10">
 												<span className="text-xl font-bold">{proj.title}</span>
-												<span>{proj.summary}</span>
+												<span className="text-[var(--fg)]/70">{proj.summary}</span>
 												{/* Project Tags */}
 												<div className="flex flex-wrap gap-1 mt-1">
 													{proj.tags.slice(0, 3).map((tag, i) =>
@@ -242,7 +253,7 @@ export default function ProjectsClient({ projects, taglist }: Props) {
 													)}
 													{(proj.tags.length - 3 > 0) &&
 														<div className="flex section-bg rounded-full border-1 border-[var(--fg)]/10">
-															<p className="text-md font-light mx-3 opacity-80">
+															<p className="text-md font-light mx-2 opacity-80">
 																{`+${proj.tags.length - 3}`}	
 															</p>
 														</div>
