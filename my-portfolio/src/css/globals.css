@@ -7,6 +7,8 @@
 	--fg: #0a0a0a;
 
 	--section-bg: #ffffff;
+	--detail-medium-contrast: rgb(234, 234, 234);
+
 	--accent-grad-l: 255 50 72;
 	--accent-grad-r: 170 33 48;
 	transition: --bg 300ms ease, --bg2 300ms ease;
@@ -21,6 +23,7 @@
 		--fg: #f5f5f5;
 
 		--section-bg: #292929;
+		--detail-medium-contrast: rgb(25, 25, 25);
 	}
 }
 
@@ -31,6 +34,7 @@ html.light {
 	--fg: #0a0a0a;
 
 	--section-bg: #ffffff;
+	--detail-medium-contrast: rgb(234, 234, 234);
 }
 html.dark {
 	--bg: #222222;
@@ -38,6 +42,7 @@ html.dark {
 	--fg: #f5f5f5;
 
 	--section-bg: #292929;
+	--detail-medium-contrast: rgb(25, 25, 25);
 }
 
 @theme inline {
@@ -98,4 +103,12 @@ html, body {
 /* Global Transitions  */
 body {
 	transition: color 300ms, background-color 300ms, border-color 300ms;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }

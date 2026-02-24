@@ -7,7 +7,7 @@ import MagGlass from "$/icons/MagGlass";
 export default function NotFound() {
 	const slug = usePathname();
 	return (
-		<main className="h-[calc(100svh-7.72rem)] flex flex-col">
+		<main className="h-[calc(100svh-5.5rem)] flex flex-col">
 			<div className="m-auto place-items-center">
 				<p className="text-sm font-light bg-[var(--section-bg)] rounded p-1">
 					{slug}

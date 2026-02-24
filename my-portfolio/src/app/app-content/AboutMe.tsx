@@ -14,7 +14,7 @@ export default function AboutMe() {
 					absolute inset-0 w-[100%] h-[100%] object-cover select-none
 					mix-blend-luminosity opacity-30 blur-[2px]
 					mask-t-from-0% mask-t-to-50%
-					md:mask-t-from-100% md: md:mask-r-from-0% md:mask-r-to-70%
+					md:mask-t-from-100% md:mask-r-from-0% md:mask-r-to-70%
 				`}
 			/>
 			{/* Left */}

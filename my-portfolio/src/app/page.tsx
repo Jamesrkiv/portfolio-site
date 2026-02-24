@@ -1,7 +1,6 @@
 import AboutMe from "./app-content/AboutMe";
 import InfoSquares from "./app-content/InfoSquares";
 import LandingArea from "./app-content/LandingArea";
-import QuickLinks from "./app-content/QuickLinks";
 
 export default function Home() {
 	return (
@@ -12,11 +11,8 @@ export default function Home() {
 			<div id="about" className="mt-4">
 				<AboutMe/>
 			</div>
-			<div id="experience" className="mt-10 md:mt-16">
+			<div id="experience" className="mt-10 md:mt-16 mb-10 md:mb-16">
 				<InfoSquares/>
-			</div>
-			<div id="more" className="mt-10 md:mt-16">
-				<QuickLinks/>
 			</div>
 		</main>
 	);

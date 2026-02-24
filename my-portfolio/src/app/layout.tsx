@@ -3,8 +3,10 @@ import { cookies } from "next/headers";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import SiteHeader from "@/components/layout/SiteHeader";
-import Scroll from "@/components/behavior/Scroll";
-import "./globals.css";
+//import Scroll from "@/components/behavior/Scroll";
+import "@/css/embla.css";
+import "@/css/globals.css";
+import QuickLinks from "@/app/app-content/QuickLinks";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,6 +38,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 					<SiteHeader/>
 					{children}
 				</main>
+				<div>
+					<QuickLinks/>
+				</div>
 			</body>
 		</html>
 	);
