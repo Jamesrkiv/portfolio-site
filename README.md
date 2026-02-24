@@ -104,11 +104,11 @@ Tailwind was selected over traditional CSS frameworks due to:
 
 ## 🗃️ Project Structure (High-Level)
 
-`src/app/`: Routing and layout (App Router)
-`src/app/api/contact/`: Email handling endpoint
-`src/components/`: Reusable UI components
-`src/css/`: CSS stylesheets
-`public/`: Static/reusable assets
+- `src/app/`: Routing and layout (App Router)
+- `src/app/api/contact/`: Email handling endpoint
+- `src/components/`: Reusable UI components
+- `src/css/`: CSS stylesheets
+- `public/`: Static/reusable assets
 
 ------------------------------------------------------------------------
 
