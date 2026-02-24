@@ -48,7 +48,7 @@ export const projects: Project[] = [
 			{
 				src: "/images/pharm-info-site/new_contact.png",
 				name: "New Contact Form",
-				desc: "The form used for creating new contacts. Fields are made available based on the user's access level."
+				desc: "The form used for creating new contacts. Fields are made available based on the user's assigned access level."
 			},
 			{
 				src: "/images/pharm-info-site/mobile_friendly.png",
@@ -82,32 +82,32 @@ export const projects: Project[] = [
 			{
 				src: "/images/djs-bot/bot_invite.png",
 				name: "Bot Invite Page",
-				desc: "Placeholder"
+				desc: "Adding the bot to a server."
 			},
 			{
 				src: "/images/djs-bot/music_commands.png",
 				name: "Music Commands",
-				desc: "Placeholder"
+				desc: "A list of all available commands for playing/queuing music."
 			},
 			{
 				src: "/images/djs-bot/help_options.png",
 				name: "Help Options",
-				desc: "Placeholder"
+				desc: "The help menu shows commands for a selected category. Categories are generated dynamically from the app/commands/ subfolder structure."
 			},
 			{
 				src: "/images/djs-bot/music_queue.png",
 				name: "Music Queue",
-				desc: "Placeholder"
+				desc: "An embedded message displaying the currently playing track as well as those queued to play next."
 			},
 			{
 				src: "/images/djs-bot/music_ui.png",
 				name: "Music UI",
-				desc: "Placeholder"
+				desc: "Messages show information regarding the music queue and the current track. Buttons allow users to pause, rewind, and skip tracks."
 			},
 			{
 				src: "/images/djs-bot/avatar.png",
 				name: "Avatar Command",
-				desc: "Placeholder"
+				desc: "The avatar command can be used to retrieve a user's profile picture."
 			},
 		],
 		repo: "https://github.com/Jamesrkiv/d.js-bot",
@@ -125,27 +125,27 @@ export const projects: Project[] = [
 			{
 				src: "/images/todo-list/darkmode.png",
 				name: "To-Do List Application (Darkmode)",
-				desc: "Placeholder"
+				desc: "Dark theme implementation built on a fluid Bootstrap grid."
 			},
 			{
 				src: "/images/todo-list/lightmode.png",
 				name: "To-Do List Application (Lightmode)",
-				desc: "Placeholder"
+				desc: "Light theme counterpart using the same scalable grid system."
 			},
 			{
 				src: "/images/todo-list/new_item.png",
 				name: "New Item Panel",
-				desc: "Placeholder"
+				desc: "New items can be created with optional due dates and priorities to allow for easier sorting."
 			},
 			{
 				src: "/images/todo-list/rescaling.png",
 				name: "Scaling Design",
-				desc: "Placeholder"
+				desc: "The app leverages Bootstrap's responsive grid system to ensure components resize and reflow smoothly at any window size."
 			},
 			{
 				src: "/images/todo-list/sort_methods.png",
 				name: "Quick Sorting",
-				desc: "Placeholder"
+				desc: "Items can be sorted by date, priority, or a user-defined order. The default option allows items to be reordered by dragging."
 			},
 		],
 		repo: "https://github.com/Jamesrkiv/TodoList",

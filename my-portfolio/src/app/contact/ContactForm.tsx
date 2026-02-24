@@ -87,8 +87,8 @@ export default function ContactForm({ className = "" }: Props) {
 			>
 				{/* Title */}
 				<div className="md:flex-1">
-					<p className="mb-1 text-2xl font-bold">{"Send an Email"}</p>
-					<p className="font-light">{"Blah blah blah, I'll reach out to you."}</p>
+					<p className="mb-1 text-2xl font-bold">{"Send Me a Message"}</p>
+					<p className="font-light">{"I’ll respond as soon as I can."}</p>
 				</div>
 				<div className="md:flex-2 flex-col">
 					{/* Name Field */}
@@ -98,7 +98,7 @@ export default function ContactForm({ className = "" }: Props) {
 							id="name"
 							name="name"
 							type="text"
-							placeholder="John Doe"
+							placeholder="Your name"
 							className={txtClasses}
 							value={name}
 							onChange={(e) => setName(e.target.value)}
@@ -122,7 +122,7 @@ export default function ContactForm({ className = "" }: Props) {
 							id="email"
 							name="email"
 							type="email"
-							placeholder="john@example.com"
+							placeholder="you@example.com"
 							className={txtClasses}
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -145,7 +145,7 @@ export default function ContactForm({ className = "" }: Props) {
 						<textarea
 							id="message"
 							name="message"
-							placeholder="Your message..."
+							placeholder="What would you like to talk about?"
 							rows={8}
 							className={txtClasses}
 							value={message}
